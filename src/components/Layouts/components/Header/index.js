@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+    faCircleQuestion,
+    faEarthAsia,
     faEllipsisVertical,
-    faHouse,
-    faLanguage,
+    faKeyboard,
     faMagnifyingGlass,
-    faMoon,
-    faQuestion,
     faSignOut,
     faSpinner,
     faX
@@ -19,17 +18,18 @@ import images from '~/assets/images';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
+import Menu from '~/components/Popper/Menu';
 
 const cx = classNames.bind(styles);
 
+const MENU_ITEMS = [
+    { icon: <FontAwesomeIcon icon={faEarthAsia} />, title: 'English' },
+    { icon: <FontAwesomeIcon icon={faCircleQuestion} />, title: 'Feedback and help', to: '/feedback' },
+    { icon: <FontAwesomeIcon icon={faKeyboard} />, title: 'Keyboard shortcuts' }
+];
+
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1, 2, 3]);
-        }, 0);
-    }, []);
 
     return (
         <header className={cx('wrapper')}>
@@ -65,45 +65,13 @@ function Header() {
             </Tippy>
 
             <div className={cx('header-right-container')}>
-                <Button title="Upload" type="rounded" to="/login" />
+                <Button title="Upload" type="text" to="/login" />
                 <Button title="Logout" type="primary" leftIcon={<FontAwesomeIcon icon={faSignOut} />} />
-                <div>
-                    <a
-                        className={cx('header-more-action')}
-                        href="/#"
-                        role="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false">
+                <Menu items={MENU_ITEMS}>
+                    <button className={cx('more-btn')}>
                         <FontAwesomeIcon icon={faEllipsisVertical} />
-                    </a>
-
-                    <ul className={cx('header-more-action-menu', 'dropdown-menu')} aria-labelledby="dropdownMenuLink">
-                        <li>
-                            <a className="dropdown-item" href="/#">
-                                <FontAwesomeIcon icon={faHouse} />
-                                <span>Công cụ dành cho nhà phát triển</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a className="dropdown-item" href="/#">
-                                <FontAwesomeIcon icon={faLanguage} />
-                                <span>Tiếng Việt</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a className="dropdown-item" href="/#">
-                                <FontAwesomeIcon icon={faQuestion} />
-                                <span>Phản hồi và trợ giúp</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a className="dropdown-item" href="/#">
-                                <FontAwesomeIcon icon={faMoon} />
-                                <span>Chế độ tối</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                    </button>
+                </Menu>
             </div>
         </header>
     );

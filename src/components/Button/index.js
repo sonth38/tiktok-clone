@@ -5,7 +5,7 @@ import styles from './Button.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Button({ children, title, onClick, type, to, href, disable, leftIcon, rightIcon }) {
+function Button({ children, title, onClick, type, to, href, disable, leftIcon, rightIcon, className }) {
     let Component = 'button';
 
     const props = {
@@ -34,7 +34,7 @@ function Button({ children, title, onClick, type, to, href, disable, leftIcon, r
         });
     }
 
-    const classes = cx('wrapper', { [`btn-${btn_type}`]: true }, { disable: disable });
+    const classes = cx('wrapper', { [`btn-${btn_type}`]: true }, { disable: disable }, className);
 
     return (
         <Component class={classes} {...props}>
