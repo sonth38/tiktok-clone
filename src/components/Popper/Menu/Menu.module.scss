@@ -15,9 +15,36 @@
         &:hover {
             background-color: rgba(22, 24, 35, 0.03);
         }
+
+        &.separate {
+            border-top: 1px solid rgba(22, 24, 35, 0.12)
+        }
     }
 }
 
 .menu-popper   {
     padding-bottom: 8px;
 }
+
+// HEADER
+.header {
+    position: relative;
+    height: 50px;
+    margin-top: -8px;
+}
+
+.back-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    padding: 10px;
+    background: transparent;
+}
+
+.header-title {
+    text-align: center;
+    height: 100%;
+    line-height: 50px;
+}
+

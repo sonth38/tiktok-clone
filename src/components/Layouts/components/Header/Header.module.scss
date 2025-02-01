@@ -131,3 +131,18 @@
     background-color: transparent;
 }
 
+.action-btn {
+    background-color: transparent;
+    font-size: 2.2rem;
+    color:#000000;
+    padding: 4px 12px;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 12px;
+    cursor: pointer;
+}
